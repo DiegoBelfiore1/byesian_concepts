@@ -1,5 +1,5 @@
-<h1 align="center"> 🔍 BC-LLM 🔍 </h1>
-<p align="center"> <b>Bayesian Concept Bottleneck Models with LLM Priors</b>  (<a href="https://arxiv.org/abs/2410.15555">Feng et al. 2024</a>). 
+<h1 align="center"> 🧑🏻‍💻 BC-LLM - Reproduction </h1>
+<p align="center"> <b>Bayesian Concept Bottleneck Models with LLM Priors by</b>  <a href="https://arxiv.org/abs/2410.15555">Feng et al. 2024</a>. 
 </p>
 
 <p align="center">
