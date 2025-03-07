@@ -75,6 +75,7 @@ def main(args):
         data_df = pd.read_csv(args.llm_outputs_file, header=0)
     else:
         data_df = pd.read_csv(args.in_dataset_file, index_col=0, header=0)
+        print(f"Leggendo il file CSV da: {args.in_dataset_file}")
         data_df['llm_output'] = [""] * len(data_df)
 
     concepts_is_missing = (

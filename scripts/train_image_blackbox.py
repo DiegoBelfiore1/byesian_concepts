@@ -60,15 +60,29 @@ class ImageDataset(Dataset):
         image = self.transform(image)
         return image, label
 
-def get_data(image_weights, device, dataloader):
+def get_data(image_weights, device, dataloader): #modificato da @Diego con Chat GPT, risolto errore mismatch cuda - cpu tra label e features
     model = models.resnet50(weights=image_weights)
     model.to(device)
+    model.eval()  # Mette il modello in modalità evaluation
 
-    with torch.no_grad(): # Disable gradients for faster inference
+    X_list, y_list = [], []
+    
+    with torch.no_grad():  # Disabilita il calcolo dei gradienti per velocizzare l'inferenza
         for images, labels in dataloader:
-            images.to(device)
-            X = model(images).detach().cpu().numpy()
-            y = labels.detach().cpu().numpy()
+            images = images.to(device)  # Sposta le immagini su CUDA
+            labels = labels.to(device)  # Sposta le etichette su CUDA
+            
+            features = model(images)  # Passa le immagini attraverso il modello
+            
+            X_list.append(features.detach().cpu().numpy())  # Ritorna su CPU per NumPy
+            y_list.append(labels.detach().cpu().numpy())
+
+    # Concatenare i batch in un unico array
+    X = np.concatenate(X_list, axis=0)
+    y = np.concatenate(y_list, axis=0)
+
+    return X, y
+
 
     return X, y
 

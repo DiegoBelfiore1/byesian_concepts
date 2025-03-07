@@ -50,6 +50,7 @@ def main(args):
         args.image_attribute_file,
         delim_whitespace=True,
         header=None,
+        encoding="utf-8", #added by @Diego
         names=["image_idx", "attribute_idx", "attribute_value", "certainty", "unknown"],
         on_bad_lines="warn")
     image_attr_df = image_attr_df[image_attr_df.attribute_idx.isin(attributes_df.attribute_idx)]
