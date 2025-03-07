@@ -1,39 +1,51 @@
-<h1 align="center"> 🧑🏻‍💻 BC-LLM - Reproduction </h1>
+<h1 align="center"> 🧑🏻‍💻 BC-LLM - Reproduction and Analysis </h1>
 <p align="center"> <b>Bayesian Concept Bottleneck Models with LLM Priors by</b>  <a href="https://arxiv.org/abs/2410.15555">Feng et al. 2024</a>. 
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/license-mit-green.svg">
   <img src="https://img.shields.io/badge/python-3.7+-blue">
 </p>  
 
 ![](./overview.png)
 
-> This is the work done on a model built by Feng et al. The model consists in the sequent structure.
+> This is the work done on a model built by Feng et al. The overall algorithm consists in a ResNet50 trained to extract vectors from pictures. Then, basing on the vectors, LLama defines concepts to describe them. 
+
+What this code do?
+
+1 - First alanalyses the CUB dataset to build a "label.csv" which organizes the data directories, labels and four basic concepts in a CSV. Script: assemble_cub_birds.py
+2 - Divides the data in train and test (10% of the data) train_test_split.py
+3 - Trains ResNet50 for multiclass classification
+
+Main changes
+
+I modified the prompts
 
 
+## Starting the experiment
 
-## Reproducing experiments
-All experiments are managed using `scons` and `nestly`.
-If you want to run a single experiment, specify the experiment's folder name, e.g. `scons exp_mimic`.
+**Requirements**
 
-**LLM Api**
+1 - Install Python 3.12.9 > conda install python=3.12
+2 - Install all packages from requirements.txt > pip install -r requirements.txt
 
-To use the either the OpenAI models or Hugging Face models through the API add a .env file in the root folder of this directory
+**Dataset settings**
 
-```bash
-llm-vi $ touch .env
-```
+1 - Download the CUB dataset from here: https://data.caltech.edu/records/65de6-vp158
+2 - Rename CUB as data/CUB_200_2011
+3 - Move "data" folder into exp_cub_birds_existing
 
-Add your token for Open AI and/or Hugging face
-```bash
-llm-vi $ echo "OPENAI_ACCESS_TOKEN=<YOUR TOKEN>" >> .env
-llm-vi $ echo "HF_ACCESS_TOKEN=<YOUR TOKEN>" >> .env
-```
+**Access Models**
 
+Create a .env with the access token for HuggingFace
+HF_ACCESS_TOKEN=TOKEN
 
-### Citation
-If you find our paper and code useful, please cite us:
+**Running the code**
+
+1 - Type on terminal > scons exp_cub_birds_existing
+
+### Citation of the original authors
+This analysis is done on:
+
 ```r
 @misc{feng2024bcllm,
       title={Bayesian Concept Bottleneck Models with LLM Priors}, 

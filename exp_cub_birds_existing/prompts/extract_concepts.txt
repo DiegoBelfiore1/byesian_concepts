@@ -1,13 +1,18 @@
-Output a list of descriptors that describe the image. For each descriptor, also list as many descriptors that mean the same thing or generalizations of the descriptor. All descriptors, synonyms, and generalizations cannot be more than two words. Output in the following format:
+In perfectly valid json format, ONLY give me a list of descriptors that describe the image. 
+For each descriptor, also list as many descriptors that mean the same thing or generalizations of the descriptor. 
+All descriptors, synonyms, and generalizations cannot be more than two words. 
+Write in the following format:
+
 {
 "1": "<STRING_OF_DESCRIPTOR1_AND_SYNONYMS_AND_GENERALIZATIONS>",
 "2": "<STRING_OF_DESCRIPTOR2_AND_SYNONYMS_AND_GENERALIZATIONS>",
 ...
 }
 
-Example:
+The output must be a valid JSON object with no additional text looking like this:
 {
     "1": "round wings",
     "2": "cardinal head, red head",
     ...
 }
+
