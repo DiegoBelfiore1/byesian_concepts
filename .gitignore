@@ -1,0 +1,12 @@
+# Ignora file temporanei e di sistema
+__pycache__/
+*.pyc
+*.pyo
+.vscode/
+.DS_Store
+
+# ignore datasets and pictures
+*.jpg
+*.png
+places365/
+CUB_200_2011/
