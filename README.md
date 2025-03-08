@@ -20,7 +20,6 @@ The only model allowed to work on CUB are built by OpenAI. The authors claim tha
 3 - Trains ResNet50 for multiclass classification
 
 4 - Tries to use an LLM for extracting high level features from the images, but then the code stops.
-4 - Tries to use an LLM for extracting high level features from the images, but then the code stops.
 
 ### Starting the experiment
 
