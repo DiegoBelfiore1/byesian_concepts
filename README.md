@@ -8,19 +8,19 @@
 
 ![](./overview.png)
 
-> This is the work done on a paper published by Feng et al. The repository proposes different models like the black box ResNET50 with IMAGENET1K_V2 weights and compares them with the bottleneck.
-The only models allowed to work on the problem proposed by Feng are proposed by OpenAI. The authors claim the open source LLama can be used too, which should not be possible, at least in Italy, where the only LLama models available are "language only".
+> This is the work done on a paper published by Feng et al. The repository proposes different models working on the same data and compares them with the authors' bottleneck.
+The only models allowed to work on CUB data in this framweork are proposed by OpenAI.
+> The authors claim the open source LLama can be used too, which should not be possible, at least in Italy, where the only LLama models available are "language only".
 
-### What happens
+### What happensn with CUB
 
-1 - First alanalyses the CUB dataset to build a "label.csv" which organizes the overaldata into a subset of 179 elements, labels and four basic concepts in a CSV. Script: assemble_cub_birds.py
+1 - Building of "label.csv" which organizes the overal data into a subset of 179 elements, labels and four basic concepts. 
 
 2 - Divides the data in train and test (10% of the data) train_test_split.py
 
 3 - Trains ResNet50 for multiclass classification
 
-
-I allowed LLama to read vectors instead of images.
+4 - Tries to use an LLM for extracting high level features from the images, but then the code stops.
 
 ### Starting the experiment
 
@@ -30,7 +30,7 @@ I allowed LLama to read vectors instead of images.
 
 2 - Install all packages from requirements.txt > pip install -r requirements.txt
 
-**Dataset settings**
+**Cub Dataset settings**
 
 1 - Download the CUB dataset from here: https://data.caltech.edu/records/65de6-vp158
 
@@ -45,7 +45,7 @@ HF_ACCESS_TOKEN=TOKEN
 
 **Running the code**
 
-1 - Type on terminal > scons exp_cub_birds_existing
+Type on terminal > scons exp_cub_birds_existing
 
 ### Citation of the original authors
 This analysis is done on:
