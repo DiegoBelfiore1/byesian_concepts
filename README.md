@@ -8,18 +8,18 @@
 
 ![](./overview.png)
 
-> This is the work done on a paper published by Feng et al. The repository proposes different models working on the same data and compares them with the authors' bottleneck.
-The only models allowed to work on CUB data in this framweork are proposed by OpenAI.
-> The authors claim the open source LLama can be used too, which should not be possible, at least in Italy, where the only LLama models available are "language only".
+> This is the work done on a paper published by Feng et al. The repository proposes a bottleneck model based on concepts extracted by an LLM. Different models like the black box ResNET50 with IMAGENET1K_V2 weights are compared with the bottleneck.
+The only model allowed to work on CUB are built by OpenAI. The authors claim that the open source Llama can be used too, which should not be possible, at least in Italy, where the only Llama models available are "language only".
 
-### What happensn with CUB
+### What happens with CUB
 
-1 - Building of "label.csv" which organizes the overal data into a subset of 179 elements, labels and four basic concepts. 
+1 - Building of "label.csv" which organizes the overal data into a subset of 179 elements, labels and four basic concepts.
 
 2 - Divides the data in train and test (10% of the data) train_test_split.py
 
 3 - Trains ResNet50 for multiclass classification
 
+4 - Tries to use an LLM for extracting high level features from the images, but then the code stops.
 4 - Tries to use an LLM for extracting high level features from the images, but then the code stops.
 
 ### Starting the experiment
