@@ -8,19 +8,16 @@
 
 ![](./overview.png)
 
-> This is the work done on a model built by Feng et al. The overall algorithm consists in a ResNet50 trained to extract vectors from pictures. Then, basing on the vectors, LLama defines concepts to describe them. 
-
-What this code do?
-
-This repository proposes different models like the black box ResNET50 with IMAGENET1K_V2 weights and compares them with the bottleneck.
+> This is the work done on a paper published by Feng et al. The repository proposes different models like the black box ResNET50 with IMAGENET1K_V2 weights and compares them with the bottleneck.
+The only models allowed to work on the problem proposed by Feng are proposed by OpenAI. The authors claim the open source LLama can be used too, which should not be possible, at least in Italy, where the only LLama models available are "language only".
 
 1 - First alanalyses the CUB dataset to build a "label.csv" which organizes the overaldata into a subset of 179 elements, labels and four basic concepts in a CSV. Script: assemble_cub_birds.py
 2 - Divides the data in train and test (10% of the data) train_test_split.py
 3 - Trains ResNet50 for multiclass classification
 
-Main changes
+##Main Changes
 
-I modified the prompts
+I allowed LLama to read vectors instead of images.
 
 
 ## Starting the experiment

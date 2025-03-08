@@ -60,31 +60,30 @@ class ImageDataset(Dataset):
         image = self.transform(image)
         return image, label
 
-def get_data(image_weights, device, dataloader): #modificato da @Diego con Chat GPT, risolto errore mismatch cuda - cpu tra label e features
+def get_data(image_weights, device, dataloader): #by @Diego suggested by Chat GPT. Labels and images were not moving to CUDA. Also the for loop was not saving all the batches bringing to lower model performances.
     model = models.resnet50(weights=image_weights)
     model.to(device)
-    model.eval()  # Mette il modello in modalità evaluation
-
+    model.eval()  
     X_list, y_list = [], []
     
-    with torch.no_grad():  # Disabilita il calcolo dei gradienti per velocizzare l'inferenza
+    with torch.no_grad():  
         for images, labels in dataloader:
-            images = images.to(device)  # Sposta le immagini su CUDA
-            labels = labels.to(device)  # Sposta le etichette su CUDA
+            images = images.to(device)  # Bring it to CUDA
+            labels = labels.to(device)  
             
-            features = model(images)  # Passa le immagini attraverso il modello
+            features = model(images) 
             
-            X_list.append(features.detach().cpu().numpy())  # Ritorna su CPU per NumPy
+            X_list.append(features.detach().cpu().numpy())  
             y_list.append(labels.detach().cpu().numpy())
 
-    # Concatenare i batch in un unico array
+
+    # Single array for labels and vectors
     X = np.concatenate(X_list, axis=0)
     y = np.concatenate(y_list, axis=0)
+    print ("X_list: ", X,"y_list: ", y)
 
     return X, y
 
-
-    return X, y
 
 def main(args):
     args = parse_args(args)

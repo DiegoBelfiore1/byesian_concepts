@@ -65,6 +65,7 @@ def parse_args(args):
 
 def main(args):
     args = parse_args(args)
+    print("questo è il file", args.indices_file)
     logging.basicConfig(format="%(message)s",
                         filename=args.log_file, level=logging.INFO)
     logging.info(args)
