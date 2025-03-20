@@ -35,18 +35,18 @@ EXTRACT_LLM_PROMPT = 'exp_mimic/prompts/age.txt'
 NUM_EPOCHS = 5  # bayesian epochs
 NUM_GREEDY_EPOCHS = 1
 NUM_BOOST_ITERS = 10
-NUM_NEW_TOKENS = 600
-BATCH_SIZE = 8
+NUM_NEW_TOKENS = 100 #600
+BATCH_SIZE = 4
 
 LLM_MODELS = [
-    'gpt-4o-mini'
-    # "meta-llama/Meta-Llama-3.1-8B-Instruct"
+    #gpt-4o-mini
+     "meta-llama/Meta-Llama-3.1-8B-Instruct"
     # "meta-llama/Meta-Llama-3.1-70B-Instruct"
     # 'meta-llama/Llama-3.2-11B-Vision-Instruct'
 ]
 LLM_DICT = {
-    'gpt-4o-mini': True,  # true using API
-    # 'meta-llama/Meta-Llama-3.1-8B-Instruct': False,  # False, not using API
+    #'gpt-4o-mini': True,  # true using API
+    'meta-llama/Meta-Llama-3.1-8B-Instruct': False,  # False, not using API
     # 'meta-llama/Meta-Llama-3.1-70B-Instruct': False, # False, not using API
     # 'meta-llama/Llama-3.2-11B-Vision-Instruct': False,
 }

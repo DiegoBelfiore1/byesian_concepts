@@ -108,6 +108,7 @@ def generate_prior_prompt(data_df, X_train, y_train, word_names, args, num_top: 
     return prompt_template
         
 def main(args):
+    '''
     args = parse_args(args)
     logging.basicConfig(format="%(message)s", filename=args.log_file, level=logging.INFO)
     logging.info(args)
@@ -115,6 +116,27 @@ def main(args):
     history = TrainingHistory(args.keep_x_cols)
 
     data_df = load_data_partition(args, init_concepts_file=args.init_concepts_file, text_summary_column=args.text_summary_column)
+
+    X_words_train, word_names = get_word_count_data(data_df, args.count_vectorizer, args.text_summary_column, min_prevalence=args.min_prevalence)
+    y_train = data_df['y'].to_numpy().flatten()
+    logging.info("y train prevalence %f", y_train.mean())
+    logging.info("data_df shape %s", data_df.shape)
+    logging.info("X_words shape %s", X_words_train.shape)'
+    '''
+
+    args = parse_args(args)
+    logging.basicConfig(format="%(message)s", filename=args.log_file, level=logging.INFO)
+    logging.info(args)
+
+    history = TrainingHistory(args.keep_x_cols)
+
+    # Carica i dati
+    data_df = load_data_partition(args, init_concepts_file=args.init_concepts_file, text_summary_column=args.text_summary_column)
+
+    # Rimuovi o sostituisci NaN nelle colonne di testo
+    data_df = data_df.dropna(subset=[args.text_summary_column])  # Rimuove le righe con NaN
+    # o se preferisci sostituirli con stringhe vuote
+    # data_df[args.text_summary_column] = data_df[args.text_summary_column].fillna('')
 
     X_words_train, word_names = get_word_count_data(data_df, args.count_vectorizer, args.text_summary_column, min_prevalence=args.min_prevalence)
     y_train = data_df['y'].to_numpy().flatten()

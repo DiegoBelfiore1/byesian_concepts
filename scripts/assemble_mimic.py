@@ -114,7 +114,7 @@ def main(args):
                              for section in sections_to_keep if section in str(sect_title).lower()]
 
         new_note = " ".join(text_to_keep)
-        new_row = row[label_cols].copy()
+        new_row = row.copy()
         new_row['sentence'] = new_note
         section_notes_data.append(new_row)
 

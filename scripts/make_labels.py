@@ -75,6 +75,10 @@ def main(args):
     coef_idxs = np.where(args.y_params[:-1] != 0)[0]
     coefs = args.y_params[coef_idxs].reshape((-1,1))
     if args.columns:
+        print("Leggendo il file CSV da:", args.in_dataset_file)
+        print("Colonne disponibili nel DataFrame:", notes_df.columns.tolist())
+        print("Colonne richieste:", args.columns)
+
         x = notes_df[args.columns].to_numpy()
     elif args.in_training_history_file is not None:
         history = TrainingHistory().load(args.in_training_history_file)
@@ -103,10 +107,10 @@ def main(args):
         
         # HACK: PURELY FOR CHECKING agreement between MIMIC annotations and LLM annotations
         # column_mappings = [
-        #     ["label_employment_False"],
-        #     ['label_alcohol_Present', 'label_alcohol_Past'],
-        #     ['label_tobacco_Present', 'label_tobacco_Past'],
-        #     ['label_drugs_Present']
+        #     ["employment_False"],
+        #     ['alcohol_Present', 'alcohol_Past'],
+        #     ['tobacco_Present', 'tobacco_Past'],
+        #     ['drugs_Present']
         # ]
         # for i, mapped_cols in enumerate(column_mappings):
         #     logging.info("COLUMN MAPPING %s", mapped_cols)

@@ -12,6 +12,12 @@ __pycache__/
 !overview.png
 places365/
 CUB_200_2011/
+mimic-iv-clinical-database-demo-2.2/
+data
+discharge.csv.gz
+
+#ignore py
+leggi.py
 
 # Suggested by the original authors
 .DS_store
